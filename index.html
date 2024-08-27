@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevFlow Kanban</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>DevFlow Kanban</h1>
+    <div id="kanban-board">
+        <div class="kanban-column" id="requirement">
+            <h2>Levantamento de Requisitos</h2>
+            <div class="task-container" id="requirement-tasks"></div>
+            <button onclick="addTask('requirement')">Adicionar Tarefa</button>
+        </div>
+        <div class="kanban-column" id="analysis">
+            <h2>Análise de Requisitos</h2>
+            <div class="task-container" id="analysis-tasks"></div>
+        </div>
+        <div class="kanban-column" id="design">
+            <h2>Design do Sistema</h2>
+            <div class="task-container" id="design-tasks"></div>
+        </div>
+        <div class="kanban-column" id="development">
+            <h2>Desenvolvimento</h2>
+            <div class="task-container" id="development-tasks"></div>
+        </div>
+        <div class="kanban-column" id="testing">
+            <h2>Testes</h2>
+            <div class="task-container" id="testing-tasks"></div>
+        </div>
+        <div class="kanban-column" id="deployment">
+            <h2>Implantação</h2>
+            <div class="task-container" id="deployment-tasks"></div>
+        </div>
+        <div class="kanban-column" id="maintenance">
+            <h2>Manutenção e Suporte</h2>
+            <div class="task-container" id="maintenance-tasks"></div>
+        </div>
+        <div class="kanban-column" id="feedback">
+            <h2>Feedback e Melhoria</h2>
+            <div class="task-container" id="feedback-tasks"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Diego Nascimento - Analista e Desenvolvedor de Sistemas</p>
+        <div class="footer-content">
+            <a href="https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/" target="_blank">LinkedIn</a>
+            <span>|</span>
+            <a href="https://github.com/DVALENASCIMENTO" target="_blank">GitHub</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
