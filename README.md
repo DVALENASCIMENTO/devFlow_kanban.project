@@ -4,8 +4,6 @@ https://dvalenascimento.github.io/devFlow_kanban.project/
 
 # DevFlow Kanban
 
-## Projeto: DevFlow Kanban
-
 ### Descrição
 
 O **DevFlow Kanban** é uma aplicação web simples e intuitiva, criada para facilitar a gestão de tarefas e o fluxo de desenvolvimento em equipes de software. Este projeto utiliza a metodologia Kanban, permitindo a organização visual de tarefas em diferentes etapas do ciclo de vida de desenvolvimento, desde o levantamento de requisitos até o feedback e melhorias contínuas.
