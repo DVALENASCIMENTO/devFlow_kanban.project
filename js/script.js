@@ -17,11 +17,29 @@ function createTaskElement(text) {
     task.textContent = text;
     task.draggable = true;
 
-    // Botão "X" vermelho para excluir a tarefa
+    // Botão de canetinha para inserir link
+    const editLinkButton = document.createElement('span');
+    editLinkButton.textContent = '✏️';
+    editLinkButton.className = 'edit-link-button';
+    editLinkButton.style.cursor = 'pointer'; // Mouse vira mãozinha ao passar
+    editLinkButton.addEventListener('click', () => {
+        const link = prompt("Insira o link para o projeto:");
+        if (link) {
+            const linkElement = document.createElement('a');
+            linkElement.href = link;
+            linkElement.textContent = '🔗';
+            linkElement.target = '_blank';
+            task.replaceChild(linkElement, editLinkButton); // Substitui a canetinha pelo link
+        }
+    });
+    task.appendChild(editLinkButton);
+
+    // Botão "X" menor para excluir a tarefa com duplo clique
     const deleteButton = document.createElement('span');
     deleteButton.textContent = 'X';
     deleteButton.className = 'delete-button';
-    deleteButton.addEventListener('click', () => {
+    deleteButton.style.cursor = 'pointer'; // Mouse vira mãozinha ao passar
+    deleteButton.addEventListener('dblclick', () => {
         const columnId = task.parentElement.id.split('-')[0];
         task.remove();
         removeTask(columnId, text);
