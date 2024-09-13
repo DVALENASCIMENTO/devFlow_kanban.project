@@ -19,7 +19,6 @@ function closeHelp(helpId) {
     document.getElementById(helpId).style.display = 'none';
 }
 
-
 function createTaskElement(text) {
     const task = document.createElement('div');
     task.className = 'task';
@@ -30,7 +29,7 @@ function createTaskElement(text) {
     const editLinkButton = document.createElement('span');
     editLinkButton.textContent = '✏️';
     editLinkButton.className = 'edit-link-button';
-    editLinkButton.style.cursor = 'pointer'; // Mouse vira mãozinha ao passar
+    editLinkButton.style.cursor = 'pointer';
     editLinkButton.addEventListener('click', () => {
         const link = prompt("Insira o link para o projeto:");
         if (link) {
@@ -38,7 +37,7 @@ function createTaskElement(text) {
             linkElement.href = link;
             linkElement.textContent = '🔗';
             linkElement.target = '_blank';
-            task.replaceChild(linkElement, editLinkButton); // Substitui a canetinha pelo link
+            task.replaceChild(linkElement, editLinkButton);
         }
     });
     task.appendChild(editLinkButton);
@@ -47,7 +46,7 @@ function createTaskElement(text) {
     const deleteButton = document.createElement('span');
     deleteButton.textContent = 'X';
     deleteButton.className = 'delete-button';
-    deleteButton.style.cursor = 'pointer'; // Mouse vira mãozinha ao passar
+    deleteButton.style.cursor = 'pointer';
     deleteButton.addEventListener('dblclick', () => {
         const columnId = task.parentElement.id.split('-')[0];
         task.remove();
@@ -70,15 +69,17 @@ function createTaskElement(text) {
 }
 
 function saveTask(columnId, taskText) {
-    let tasks = JSON.parse(localStorage.getItem(columnId)) || [];
-    tasks.push(taskText);
-    localStorage.setItem(columnId, JSON.stringify(tasks));
+    let kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
+    kanbanData[columnId] = kanbanData[columnId] || [];
+    kanbanData[columnId].push(taskText);
+    localStorage.setItem('devflow_kanban', JSON.stringify(kanbanData));
 }
 
 function loadTasks() {
+    const kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
     const columns = ['requirement', 'analysis', 'design', 'development', 'testing', 'deployment', 'maintenance', 'feedback'];
     columns.forEach(columnId => {
-        const tasks = JSON.parse(localStorage.getItem(columnId)) || [];
+        const tasks = kanbanData[columnId] || [];
         tasks.forEach(taskText => {
             const taskElement = createTaskElement(taskText);
             document.getElementById(`${columnId}-tasks`).appendChild(taskElement);
@@ -122,43 +123,56 @@ function drop(event) {
 }
 
 function removeTask(columnId, taskText) {
-    let tasks = JSON.parse(localStorage.getItem(columnId)) || [];
+    let kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
+    const tasks = kanbanData[columnId] || [];
     const index = tasks.indexOf(taskText);
     if (index !== -1) {
         tasks.splice(index, 1);
-        localStorage.setItem(columnId, JSON.stringify(tasks));
+        kanbanData[columnId] = tasks;
+        localStorage.setItem('devflow_kanban', JSON.stringify(kanbanData));
     }
 }
 
 function removeTaskFromAllColumns(taskText) {
+    let kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
     const columns = ['requirement', 'analysis', 'design', 'development', 'testing', 'deployment', 'maintenance', 'feedback'];
     columns.forEach(columnId => {
-        removeTask(columnId, taskText);
+        const tasks = kanbanData[columnId] || [];
+        const index = tasks.indexOf(taskText);
+        if (index !== -1) {
+            tasks.splice(index, 1);
+            kanbanData[columnId] = tasks;
+        }
     });
+    localStorage.setItem('devflow_kanban', JSON.stringify(kanbanData));
 }
-
-function scrollToContent(){
-    document.getElementById("kanban-board").scrollIntoView({
-        behavior: 'smooth'
-    });
-}
-
 
 function moveTask(task, direction) {
     const currentTask = task;
     const container = currentTask.parentElement;
-    
+
     if (direction === 'up' && currentTask.previousElementSibling) {
         container.insertBefore(currentTask, currentTask.previousElementSibling);
     } else if (direction === 'down' && currentTask.nextElementSibling) {
         container.insertBefore(currentTask.nextElementSibling, currentTask);
     }
-    
+
     updateLocalStorage(container);
 }
 
 function updateLocalStorage(container) {
     const columnId = container.id.split('-')[0];
     const tasks = Array.from(container.children).map(task => task.textContent.slice(0, -1)); // Remove o "X"
-    localStorage.setItem(columnId, JSON.stringify(tasks));
+    let kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
+    kanbanData[columnId] = tasks;
+    localStorage.setItem('devflow_kanban', JSON.stringify(kanbanData));
 }
+
+function scrollToContent() {
+    document.getElementById("kanban-board").scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+
+    
