@@ -129,10 +129,11 @@ function removeTaskFromAllColumns(taskText) {
 }
 
 function scrollToContent(){
-    document.getElementById("main-content").scrollIntoView({
+    document.getElementById("kanban-board").scrollIntoView({
         behavior: 'smooth'
     });
 }
+
 
 function moveTask(task, direction) {
     const currentTask = task;
