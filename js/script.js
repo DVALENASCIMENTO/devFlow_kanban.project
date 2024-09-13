@@ -11,6 +11,15 @@ function addTask(columnId) {
     }
 }
 
+function showHelp(helpId) {
+    document.getElementById(helpId).style.display = 'block';
+}
+
+function closeHelp(helpId) {
+    document.getElementById(helpId).style.display = 'none';
+}
+
+
 function createTaskElement(text) {
     const task = document.createElement('div');
     task.className = 'task';
