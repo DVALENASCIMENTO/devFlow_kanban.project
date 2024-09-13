@@ -11,6 +11,15 @@ function addTask(columnId) {
     }
 }
 
+function showHelp(helpId) {
+    document.getElementById(helpId).style.display = 'block';
+}
+
+function closeHelp(helpId) {
+    document.getElementById(helpId).style.display = 'none';
+}
+
+
 function createTaskElement(text) {
     const task = document.createElement('div');
     task.className = 'task';
@@ -127,6 +136,13 @@ function removeTaskFromAllColumns(taskText) {
         removeTask(columnId, taskText);
     });
 }
+
+function scrollToContent(){
+    document.getElementById("kanban-board").scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
 
 function moveTask(task, direction) {
     const currentTask = task;
