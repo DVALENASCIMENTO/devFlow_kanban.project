@@ -128,6 +128,12 @@ function removeTaskFromAllColumns(taskText) {
     });
 }
 
+function scrollToContent(){
+    document.getElementById("main-content").scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
 function moveTask(task, direction) {
     const currentTask = task;
     const container = currentTask.parentElement;
