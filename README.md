@@ -1,56 +1,102 @@
-![image](https://github.com/user-attachments/assets/4fb8f3e8-5646-4fad-9a61-35b8149cbb9c)
-
-https://dvalenascimento.github.io/devFlow_kanban.project/
+![image](https://github.com/user-attachments/assets/9dc2d39f-abc3-473b-8f13-5d5c56038058)
 
 # DevFlow Kanban
 
-### Descrição
+## Descrição do Projeto
 
-O **DevFlow Kanban** é uma aplicação web simples e intuitiva, criada para facilitar a gestão de tarefas e o fluxo de desenvolvimento em equipes de software. Este projeto utiliza a metodologia Kanban, permitindo a organização visual de tarefas em diferentes etapas do ciclo de vida de desenvolvimento, desde o levantamento de requisitos até o feedback e melhorias contínuas.
+**DevFlow Kanban** https://dvalenascimento.github.io/devFlow_kanban.project/ é uma aplicação web que permite a organização visual de tarefas utilizando o método Kanban, facilitando o gerenciamento de processos de desenvolvimento de software. O projeto inclui colunas representando cada fase do ciclo de desenvolvimento, desde o levantamento de requisitos até o feedback e a melhoria contínua.
 
-### Funcionalidades
+## Funcionalidades
 
-- **Adicionar Tarefas:** Crie novas tarefas em qualquer etapa do processo de desenvolvimento. Cada tarefa pode ser facilmente movida entre as colunas, conforme o progresso do trabalho.
-- **Exclusão de Tarefas:** As tarefas podem ser removidas com um simples clique no botão "X" vermelho, posicionado no canto superior direito da tarefa.
-- **Movimentação de Tarefas:** As tarefas podem ser rearranjadas dentro de uma coluna com um simples arrastar e soltar, ou movidas para cima e para baixo através de duplo clique e clique direito, respectivamente.
-- **Persistência de Dados:** As tarefas são armazenadas no `localStorage` do navegador, permitindo que o progresso seja mantido mesmo ao fechar e reabrir o navegador.
-- **Interface Responsiva:** O layout é responsivo, proporcionando uma experiência de usuário otimizada em diferentes dispositivos e tamanhos de tela.
+- Interface Kanban visual, com colunas para diferentes fases do desenvolvimento de software:
+  - Levantamento de Requisitos
+  - Análise de Requisitos
+  - Design do Sistema
+  - Desenvolvimento
+  - Testes
+  - Implantação
+  - Manutenção e Suporte
+  - Feedback e Melhoria
+- Adicionar, mover e excluir tarefas em cada coluna.
+- Capacidade de vincular um link a cada tarefa para facilitar o acompanhamento de projetos relacionados.
+- Armazenamento local de tarefas usando `localStorage`, mantendo as informações entre sessões.
+- Botões de ajuda específicos para cada fase do Kanban, explicando a importância de cada etapa.
+- Animações e layout responsivo para uma experiência visual agradável.
 
-### Estrutura do Projeto
+## Como Usar
 
-- **HTML:** Define a estrutura e os elementos da página, incluindo as colunas Kanban e os botões de interação.
-- **CSS:** Estiliza a aplicação, com foco em uma interface visualmente atraente e fácil de usar, utilizando cores contrastantes e animações suaves.
-- **JavaScript:** Gerencia a lógica do aplicativo, como a criação, movimentação, exclusão e armazenamento das tarefas.
+1. Na página inicial, clique no botão **Iniciar** para ser levado ao quadro Kanban.
+2. Para adicionar uma tarefa a uma coluna, clique no botão **Adicionar Tarefa** na coluna desejada e insira a descrição da tarefa.
+3. As tarefas podem ser arrastadas entre as colunas para marcar a progressão entre as fases.
+4. Clique no ícone ✏️ em uma tarefa para adicionar um link para o projeto relacionado.
+5. Dê um duplo clique em uma tarefa para movê-la para cima na lista ou clique com o botão direito para movê-la para baixo.
+6. Dê um duplo clique no ícone "X" de uma tarefa para excluí-la.
+7. O progresso das tarefas é salvo localmente no navegador e será carregado automaticamente ao abrir a página novamente.
 
-### Colunas Kanban
+## Tecnologias Utilizadas
 
-1. **Levantamento de Requisitos**
-2. **Análise de Requisitos**
-3. **Design do Sistema**
-4. **Desenvolvimento**
-5. **Testes**
-6. **Implantação**
-7. **Manutenção e Suporte**
-8. **Feedback e Melhoria**
+- **HTML5**: Estrutura semântica da página.
+- **CSS3**: Estilização da interface do usuário, incluindo design responsivo e animações.
+- **JavaScript (ES6+)**: Implementação da lógica da aplicação, incluindo adição de tarefas, armazenamento local e eventos de arrastar e soltar.
+- **LocalStorage**: Armazenamento das tarefas localmente no navegador para persistência de dados.
 
-### Como Executar
+## Requisitos do Sistema
 
-1. Clone este repositório ou faça o download dos arquivos.
-2. Abra o arquivo `index.html` em seu navegador.
-3. Adicione e mova tarefas entre as colunas para gerenciar seu fluxo de trabalho.
+- Navegador web moderno (Google Chrome, Firefox, Edge, etc.).
+- Conexão à internet para carregar os recursos da página.
 
-### Tecnologias Utilizadas
+## Instalação
 
-- **HTML5**
-- **CSS3**
-- **JavaScript**
+1. Clone o repositório do projeto:
+   ```bash
+   git clone https://github.com/DVALENASCIMENTO/DevFlowKanban.git
+   ```
+2. Navegue até o diretório do projeto:
+   ```bash
+   cd DevFlowKanban
+   ```
+3. Abra o arquivo `index.html` no navegador ou hospede a aplicação em um servidor web local.
 
-### Autor
+## Estrutura do Projeto
 
-Este projeto foi desenvolvido por **Diego Nascimento**, Analista e Desenvolvedor de Sistemas.
+```bash
+DevFlowKanban/
+├── css/
+│   └── styles.css   # Estilos personalizados do projeto
+├── images/
+│   └── (Imagens de ícones, logotipos e projetos)
+├── js/
+│   └── script.js    # Lógica da aplicação
+├── index.html       # Página principal da aplicação
+└── README.md        # Documentação do projeto
+```
 
-- [LinkedIn](https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/)
-- [GitHub](https://github.com/DVALENASCIMENTO)
+## Contribuição
+
+1. Faça um fork do repositório.
+2. Crie uma branch para suas modificações:
+   ```bash
+   git checkout -b minha-feature
+   ```
+3. Faça suas alterações e commite:
+   ```bash
+   git commit -m "Adiciona nova feature"
+   ```
+4. Envie para o seu fork:
+   ```bash
+   git push origin minha-feature
+   ```
+5. Abra um pull request para que suas alterações sejam revisadas.
+
+## Autor
+
+**Diego Nascimento** - [GitHub](https://github.com/DVALENASCIMENTO)
+
+Para mais informações sobre o autor, visite [LinkedIn](https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/).
+
+---
+
+Sinta-se à vontade para contribuir com sugestões, melhorias ou novos recursos!
 
 ### Licença
 
