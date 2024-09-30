@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #27292f; /* Azul Escuro (Cor Primária) */
+    background-color: #27292f; 
     margin: 0;
     padding: 20px;
     display: flex;
@@ -94,6 +94,8 @@ h1 {
     padding: 10px;
     width: 100%;
     max-width: 1200px;
+    height: 100vh; /* Ocupa toda a altura da tela */
+    box-sizing: border-box; /* Inclui padding e bordas no cálculo do tamanho */
 }
 
 .help-popup {
@@ -123,7 +125,7 @@ h1 {
 }
 
 .kanban-column {
-    background-color: #000000; /* Azul Escuro */
+    background-color: #000000; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     margin: 0 10px;
@@ -133,9 +135,9 @@ h1 {
     color: #FFFFFF; /* Branco */
 }
 
-.kanban-column h2 {
+.kanban-column h4 {
     text-align: center;
-    font-size: 1.3em;
+    margin-top: auto;
     margin-bottom: 15px;
     color: #E0E0E0; /* Cinza Claro */
 }
@@ -144,6 +146,7 @@ h1 {
     min-height: 100px;
     border: 2px dashed #E0E0E0; /* Cinza Claro */
     padding: 10px;
+    height: 270px;
     border-radius: 5px;
     background-color: #FFFFFF; /* Branco */
 }
