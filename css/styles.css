@@ -1,22 +1,37 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #000000; /* Background preto */
+    background-color: #27292f; /* Azul Escuro (Cor Primária) */
     margin: 0;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #ffffff; /* Branco */
+    color: #FFFFFF; /* Branco (Cor de Detalhe) */
     font-size: 0.9em; /* Diminui o tamanho das letras */
 }
 
-.intro-section{
+.intro-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     width: 100vw;
+}
+
+/* Estilização da imagem do logo */
+.intro-section .logo {
+    max-width: 150px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Animação ao passar o mouse sobre a imagem */
+.intro-section .logo:hover {
+    transform: scale(1.1);
 }
 
 h1 {
@@ -26,7 +41,7 @@ h1 {
     font-size: 1.8em;
     letter-spacing: 1px;
     font-weight: bold;
-    background: linear-gradient(90deg, #0033cc, #ffffff, #d9d9d9, #0033cc);
+    background: linear-gradient(90deg, #5fb2ff, #FFFFFF, #E0E0E0, #5fb2ff); /* Azul Escuro, Branco, Cinza Claro */
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradientAnimation 5s infinite;
@@ -50,30 +65,28 @@ h1 {
     justify-content: space-between;
     padding: 10px;
     margin: 5px 0;
-    background-color: #f4f4f4;
+    background-color: #E0E0E0; /* Cinza Claro (Cor Secundária) */
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .delete-button {
-    color: red;
+    color: #FF9800; /* Laranja (Cor de Ênfase) */
     font-size: 12px;
     margin-left: 10px;
     cursor: pointer;
 }
 
 .edit-button {
-    color: blue;
+    color: #1E3A8A; /* Azul Escuro */
     font-size: 14px;
     cursor: pointer;
     margin-left: 10px;
 }
 
-
 .delete-button:hover {
     background-color: #cc0000; /* Vermelho Escuro */
 }
-
 
 #kanban-board {
     display: flex;
@@ -85,9 +98,9 @@ h1 {
 
 .help-popup {
     display: none;
-    position:relative;
-    background-color: #f9f9f9;
-    color: #000000;
+    position: relative;
+    background-color: #FFFFFF; /* Branco */
+    color: #000000; /* Preto */
     border: 1px solid #ccc;
     padding: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -96,7 +109,7 @@ h1 {
 
 .help-button {
     margin-left: 10px;
-    background-color: #007bff;
+    background-color: #5fb2ff; /* Azul Escuro */
     color: white;
     border: none;
     padding: 5px 10px;
@@ -106,72 +119,107 @@ h1 {
 }
 
 .help-button:hover {
-    background-color: #0056b3;
+    background-color: #ffab2c;
 }
 
-
 .kanban-column {
-    background-color: #0033cc; /* Azul Elétrico */
+    background-color: #000000; /* Azul Escuro */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     margin: 0 10px;
     padding: 10px;
     width: 250px;
     flex-shrink: 0;
-    color: #ffffff; /* Branco */
+    color: #FFFFFF; /* Branco */
 }
 
 .kanban-column h2 {
     text-align: center;
     font-size: 1.3em;
     margin-bottom: 15px;
-    color: #d9d9d9; /* Cinza Médio */
+    color: #E0E0E0; /* Cinza Claro */
 }
 
 .task-container {
     min-height: 100px;
-    border: 2px dashed #d9d9d9; /* Cinza Médio */
+    border: 2px dashed #E0E0E0; /* Cinza Claro */
     padding: 10px;
     border-radius: 5px;
-    background-color: #ffffff; /* Branco */
+    background-color: #FFFFFF; /* Branco */
 }
 
 .task {
-    background-color: #d9d9d9; /* Cinza Médio */
+    background-color: #E0E0E0; /* Cinza Claro */
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: move;
-    color: #0033cc; /* Azul Elétrico */
+    color: #1E3A8A; /* Azul Escuro */
     font-weight: bold;
 }
 
 .task:hover {
-    background-color: #ffffff; /* Branco */
+    background-color: #FFFFFF; /* Branco */
     color: #000000; /* Preto */
 }
 
 button {
     margin-top: 10px;
     padding: 8px 15px;
-    background-color: #d9d9d9; /* Cinza Médio */
+    background-color: #5fb2ff; /* Cinza Claro */
     color: #000000; /* Preto */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 0.9em; /* Diminui o tamanho das letras */
+    font-size: 0.9em;
     font-weight: bold;
 }
 
 button:hover {
-    background-color: #b0b0b0; /* Acento mais escuro */
+    background-color: #ffab2c; /* Cinza Escuro */
 }
 
-/* Estilização do footer */
+.project-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+.project-buttons a {
+    margin: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-buttons a:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.project-buttons img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.project-buttons img:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .project-buttons img {
+        width: 80px;
+        height: 80px;
+    }
+}
+
 footer {
     margin-top: 30px;
-    background-color: #0033cc; /* Azul Elétrico */
-    color: #ffffff; /* Branco */
+    background-color: #000000; /* Azul Escuro */
+    color: #FFFFFF; /* Branco */
     padding: 10px;
     text-align: center;
     border-radius: 5px;
@@ -179,19 +227,16 @@ footer {
     width: 100%;
 }
 
-footer .footer-content {
-    margin-top: 10px;
-}
-
 footer a {
-    color: #ffae00; /* Cinza Médio */
+    color: #5fb2ff; 
+
     text-decoration: none;
 }
 
 footer a:hover {
-    color: #ffffff; /* Branco */
+    color: #ffab2c; /* Laranja */
 }
 
 footer span {
-    color: #ffffff; /* Branco */
+    color: #FFFFFF; /* Branco */
 }
