@@ -11,24 +11,24 @@
         <img src="images/devFlowKanban.webp" alt="Logo Meta Diária" class="logo">
         <h1>DevFlow Kanban</h1>
         <p>Organize suas tarefas de desenvolvimento com eficiência e clareza</p>
-        <button class="start-button" onclick="scrollToContent()">Iniciar</button>
+        <button class="start-button" onclick="scrollToContent()" title="Clique para Iniciar">Iniciar</button>
     </div>
     <div id="kanban-board"> 
         <div class="kanban-column" id="requirement">
             <h4>Levantamento de Requisitos 
-                <button class="help-button" onclick="showHelp('requirement-help')">❓</button>
+                <button class="help-button" onclick="showHelp('requirement-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="requirement-help" class="help-popup">
                 <p>Essa etapa envolve a identificação e documentação dos requisitos e necessidades do sistema que será desenvolvido.</p>
                 <button onclick="closeHelp('requirement-help')">X</button>
             </div>
             <div class="task-container" id="requirement-tasks"></div>
-            <button onclick="addTask('requirement')">Adicionar Tarefa</button>
+            <button onclick="addTask('requirement')" title="Clique para Adicionar Tarefa">Adicionar Tarefa</button>
         </div>
     
         <div class="kanban-column" id="analysis">
             <h4>Análise de Requisitos 
-                <button class="help-button" onclick="showHelp('analysis-help')">❓</button>
+                <button class="help-button" onclick="showHelp('analysis-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="analysis-help" class="help-popup">
                 <p>Nesta etapa, os requisitos são revisados para garantir que sejam claros, completos e possíveis de serem implementados.</p>
@@ -39,7 +39,7 @@
     
         <div class="kanban-column" id="design">
             <h4>Design do Sistema 
-                <button class="help-button" onclick="showHelp('design-help')">❓</button>
+                <button class="help-button" onclick="showHelp('design-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="design-help" class="help-popup">
                 <p>A fase de design define a arquitetura do sistema, incluindo a estrutura, as interfaces e a integração dos componentes.</p>
@@ -50,7 +50,7 @@
     
         <div class="kanban-column" id="development">
             <h4>Desenvolvimento 
-                <button class="help-button" onclick="showHelp('development-help')">❓</button>
+                <button class="help-button" onclick="showHelp('development-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="development-help" class="help-popup">
                 <p>O desenvolvimento inclui a programação e a implementação do sistema conforme o design estabelecido.</p>
@@ -61,7 +61,7 @@
     
         <div class="kanban-column" id="testing">
             <h4>Testes 
-                <button class="help-button" onclick="showHelp('testing-help')">❓</button>
+                <button class="help-button" onclick="showHelp('testing-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="testing-help" class="help-popup">
                 <p>Durante os testes, o software é verificado para garantir que funcione conforme os requisitos e sem erros.</p>
@@ -72,7 +72,7 @@
     
         <div class="kanban-column" id="deployment">
             <h4>Implantação 
-                <button class="help-button" onclick="showHelp('deployment-help')">❓</button>
+                <button class="help-button" onclick="showHelp('deployment-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="deployment-help" class="help-popup">
                 <p>A implantação envolve disponibilizar o sistema em um ambiente de produção para ser utilizado pelos usuários finais.</p>
@@ -83,7 +83,7 @@
     
         <div class="kanban-column" id="maintenance">
             <h4>Manutenção e Suporte 
-                <button class="help-button" onclick="showHelp('maintenance-help')">❓</button>
+                <button class="help-button" onclick="showHelp('maintenance-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="maintenance-help" class="help-popup">
                 <p>Após a implantação, o software requer manutenção para corrigir erros e implementar melhorias.</p>
@@ -94,7 +94,7 @@
     
         <div class="kanban-column" id="feedback">
             <h4>Feedback e Melhoria 
-                <button class="help-button" onclick="showHelp('feedback-help')">❓</button>
+                <button class="help-button" onclick="showHelp('feedback-help')" title="Clique para Saber Mais">❓</button>
             </h4>
             <div id="feedback-help" class="help-popup">
                 <p>Nesta etapa, o feedback dos usuários é coletado e analisado para implementar melhorias no sistema.</p>
@@ -105,25 +105,25 @@
     </div>
     <!-- Botões de imagens para os projetos -->
     <div class="project-buttons">
-        <a href="https://github.com/DVALENASCIMENTO?tab=repositories" target="_blank">
+        <a href="https://github.com/DVALENASCIMENTO?tab=repositories" target="_blank" title="Clique para Acessar o github">
             <img src="images/github.png" alt="GitHub" class="project-icon">
         </a>
-        <a href="https://dvalenascimento.github.io/reqForm.project/" target="_blank">
+        <a href="https://dvalenascimento.github.io/reqForm.project/" target="_blank" title="Clique para Acessar o ReqForm">
             <img src="images/reqForm.jpg" alt="ReqForm" class="project-icon">
         </a>
-        <a href="https://dvalenascimento.github.io/ArchMaster.project/" target="_blank">
+        <a href="https://dvalenascimento.github.io/ArchMaster.project/" target="_blank" title="Clique para Acessar o ArchMaster">
             <img src="images/archMaster.webp" alt="ArchMaster" class="project-icon">
         </a>
-        <a href="https://dvalenascimento.github.io/colorPallet.project/" target="_blank">
+        <a href="https://dvalenascimento.github.io/colorPallet.project/" target="_blank" title="Clique para Acessar o CollorPalet">
             <img src="images/colorPallet.jpg" alt="ColorPalet" class="project-icon">
         </a>
-        <a href="https://dvalenascimento.github.io/layoutCodeHub.project/" target="_blank">
+        <a href="https://dvalenascimento.github.io/layoutCodeHub.project/" target="_blank" title="Clique para Acessar o LayoutCodeHub">
             <img src="images/layoutCodeHub.webp" alt="Layout CodeHub" class="project-icon">
         </a>
-        <a href="https://dvalenascimento.github.io/typeShowCase.project/" target="_blank">
+        <a href="https://dvalenascimento.github.io/typeShowCase.project/" target="_blank" title="Clique para Acessar o TypeShowCase">
             <img src="images/typeShowCase.webp" alt="Type Show Case" class="project-icon">
         </a>
-        <a href="https://dvalenascimento.github.io/taskTime_Pro.Project/" target="_blank">
+        <a href="https://dvalenascimento.github.io/taskTime_Pro.Project/" target="_blank" title="Clique para Acessar o TaskTime Pro">
             <img src="images/taskTimePro.jpg" alt="TaskTime Pro" class="project-icon">
         </a>
     </div>
@@ -131,9 +131,9 @@
     <footer>
         <p>Diego Nascimento - Analista e Desenvolvedor de Sistemas</p>
         <div class="footer-content">
-            <a href="https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/" target="_blank">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/diego-vale-do-nascimento-48212215b/" target="_blank" title="Clique para Acessar o Linkedin">LinkedIn</a>
             <span>|</span>
-            <a href="https://github.com/DVALENASCIMENTO" target="_blank">GitHub</a>
+            <a href="https://github.com/DVALENASCIMENTO" target="_blank" title="Clique para Acessar o Github">GitHub</a>
         </div>
     </footer>
 
