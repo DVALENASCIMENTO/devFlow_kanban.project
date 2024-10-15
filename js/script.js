@@ -22,35 +22,60 @@ function closeHelp(helpId) {
 function createTaskElement(text) {
     const task = document.createElement('div');
     task.className = 'task';
-    task.textContent = text;
     task.draggable = true;
+
+    // Verifica se há um link existente no texto salvo no localStorage
+    let taskParts = text.split('|');
+    let taskText = taskParts[0];
+    let taskLink = taskParts[1] ? taskParts[1] : null;
+    
+    const taskTextElement = document.createElement('span');
+    taskTextElement.textContent = taskText;
+    task.appendChild(taskTextElement);
 
     // Botão de canetinha para inserir link
     const editLinkButton = document.createElement('span');
     editLinkButton.textContent = '✏️';
     editLinkButton.className = 'edit-link-button';
     editLinkButton.style.cursor = 'pointer';
+    editLinkButton.title = 'Clique aqui para adicionar o link do projeto';
+
     editLinkButton.addEventListener('click', () => {
         const link = prompt("Insira o link para o projeto:");
         if (link) {
+            taskLink = link;
             const linkElement = document.createElement('a');
             linkElement.href = link;
             linkElement.textContent = '🔗';
             linkElement.target = '_blank';
+            linkElement.title = 'Clique para abrir o projeto';
             task.replaceChild(linkElement, editLinkButton);
+            updateTaskWithLink(task, taskText, link);
         }
     });
-    task.appendChild(editLinkButton);
+    
+    if (taskLink) {
+        const linkElement = document.createElement('a');
+        linkElement.href = taskLink;
+        linkElement.textContent = '🔗';
+        linkElement.target = '_blank';
+        linkElement.title = 'Clique para abrir o projeto';
+        task.appendChild(linkElement);
+    } else {
+        task.appendChild(editLinkButton);
+    }
 
-    // Botão "X" menor para excluir a tarefa com duplo clique
+    // Botão "X" para excluir a tarefa com duplo clique
     const deleteButton = document.createElement('span');
     deleteButton.textContent = 'X';
     deleteButton.className = 'delete-button';
     deleteButton.style.cursor = 'pointer';
+    deleteButton.title = 'Clique duas vezes para excluir a tarefa';
+
     deleteButton.addEventListener('dblclick', () => {
         const columnId = task.parentElement.id.split('-')[0];
         task.remove();
-        removeTask(columnId, text);
+        removeTask(columnId, taskText);
     });
     task.appendChild(deleteButton);
 
@@ -87,9 +112,17 @@ function loadTasks() {
     });
 }
 
+function updateTaskWithLink(task, taskText, link) {
+    const columnId = task.parentElement.id.split('-')[0];
+    let kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
+    kanbanData[columnId] = kanbanData[columnId].map(task => 
+        task.includes(taskText) ? `${taskText}|${link}` : task
+    );
+    localStorage.setItem('devflow_kanban', JSON.stringify(kanbanData));
+}
+
 function dragStart(event) {
-    event.dataTransfer.setData('text/plain', event.target.textContent);
-    event.dataTransfer.setData('task-id', event.target.id);
+    event.dataTransfer.setData('text/plain', event.target.querySelector('span').textContent);
     setTimeout(() => {
         event.target.style.display = 'none';
     }, 0);
@@ -115,7 +148,9 @@ function drop(event) {
     const targetContainer = event.target.closest('.task-container');
 
     if (targetContainer) {
-        const taskElement = Array.from(document.querySelectorAll('.task')).find(task => task.textContent.includes(taskText));
+        const taskElement = Array.from(document.querySelectorAll('.task')).find(task => 
+            task.querySelector('span').textContent === taskText
+        );
         targetContainer.appendChild(taskElement);
         removeTaskFromAllColumns(taskText);
         saveTask(columnId, taskText);
@@ -125,7 +160,7 @@ function drop(event) {
 function removeTask(columnId, taskText) {
     let kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
     const tasks = kanbanData[columnId] || [];
-    const index = tasks.indexOf(taskText);
+    const index = tasks.findIndex(task => task.startsWith(taskText));
     if (index !== -1) {
         tasks.splice(index, 1);
         kanbanData[columnId] = tasks;
@@ -138,7 +173,7 @@ function removeTaskFromAllColumns(taskText) {
     const columns = ['requirement', 'analysis', 'design', 'development', 'testing', 'deployment', 'maintenance', 'feedback'];
     columns.forEach(columnId => {
         const tasks = kanbanData[columnId] || [];
-        const index = tasks.indexOf(taskText);
+        const index = tasks.findIndex(task => task.startsWith(taskText));
         if (index !== -1) {
             tasks.splice(index, 1);
             kanbanData[columnId] = tasks;
@@ -162,7 +197,12 @@ function moveTask(task, direction) {
 
 function updateLocalStorage(container) {
     const columnId = container.id.split('-')[0];
-    const tasks = Array.from(container.children).map(task => task.textContent.slice(0, -1)); // Remove o "X"
+    const tasks = Array.from(container.children).map(task => {
+        const taskText = task.querySelector('span').textContent;
+        const linkElement = task.querySelector('a');
+        const link = linkElement ? linkElement.href : null;
+        return link ? `${taskText}|${link}` : taskText;
+    });
     let kanbanData = JSON.parse(localStorage.getItem('devflow_kanban')) || {};
     kanbanData[columnId] = tasks;
     localStorage.setItem('devflow_kanban', JSON.stringify(kanbanData));
@@ -173,6 +213,3 @@ function scrollToContent() {
         behavior: 'smooth'
     });
 }
-
-
-    

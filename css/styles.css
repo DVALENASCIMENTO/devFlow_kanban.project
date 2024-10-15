@@ -19,6 +19,12 @@ body {
     width: 100vw;
 }
 
+.intro-section p {
+    margin: 10px 0;
+    font-size: 1.2em; /* Ajuste adaptável para telas menores */
+    color: #cecece;
+}
+
 /* Estilização da imagem do logo */
 .intro-section .logo {
     max-width: 150px;
